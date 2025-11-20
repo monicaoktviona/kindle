@@ -4,9 +4,11 @@ import { Link } from "react-router";
 import { readSqlite } from "~/utils/readSql";
 import { useVocabStore } from "~/store/vocabStore";
 import { Button } from "~/components/ui/button";
+import { useTranslation } from "react-i18next";
 
 function UploadDictionary() {
   const { setRows } = useVocabStore();
+  const { t } = useTranslation();
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files || e.target.files.length === 0) return;
@@ -22,7 +24,7 @@ function UploadDictionary() {
     <>
       <div className="grid w-full max-w-sm items-center gap-3">
         <Label htmlFor="dictionary">
-          Upload Your Kindle Dictionary <i>(.db)</i>
+          {t("uploadYourKindleDictionaryFile")}
         </Label>
         <Input
           id="dictionary"
@@ -33,11 +35,8 @@ function UploadDictionary() {
         />
         <div className="flex w-full justify-center gap-4">
           <Button>
-            <Link to="/flashcards">Go to Flashcards</Link>
+            <Link to="/flashcards">{t("goToFlashcards")}</Link>
           </Button>
-          {/* <Link to="/quiz" className="cursor-pointer" variant="outline">
-            Go to Quiz
-          </Link> */}
         </div>
       </div>
     </>
