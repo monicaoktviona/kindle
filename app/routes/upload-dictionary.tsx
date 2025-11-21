@@ -1,10 +1,11 @@
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router";
+
+import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
-import { Link } from "react-router";
-import { readSqlite } from "~/utils/readSql";
 import { useVocabStore } from "~/store/vocabStore";
-import { Button } from "~/components/ui/button";
-import { useTranslation } from "react-i18next";
+import { readSqlite } from "~/utils/readSql";
 
 function UploadDictionary() {
   const { setRows } = useVocabStore();
