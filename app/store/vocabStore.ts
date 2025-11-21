@@ -3,7 +3,6 @@ import { persist } from "zustand/middleware";
 
 import type { VocabularyWord } from "~/modules/upload-dictionary/type";
 
-
 interface VocabState {
   rows: VocabularyWord[] | null;
   setRows: (rows: VocabularyWord[]) => void;
