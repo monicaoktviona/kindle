@@ -1,4 +1,10 @@
 {
     "uploadYourKindleDictionaryFile": "Unggah file kamus Kindle Anda (.db)",
-    "goToFlashcards": "Lihat Flashcards"
+    "goToFlashcards": "Lihat Flashcards",
+    "addNewWord": "Tambah Kata Baru",
+    "field_required": "{{field}} wajib diisi",
+    "newWord": "Kata Baru",
+    "invalidEnglishWord": "Kata bahasa Inggris tidak valid. Silakan coba lagi.",
+    "addNewWordDescription": "Tambahkan kata bahasa Inggris yang valid ke flashcards Anda.",
+    "save": "Simpan"
 }
