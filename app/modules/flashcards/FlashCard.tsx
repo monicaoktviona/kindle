@@ -1,18 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { Volume2Icon } from "components/ui/icons/lucide-volume-2";
+import { toast } from "sonner";
 
 import { Card } from "~/components/ui/card";
 import {
   Dialog,
   DialogContent,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "~/components/ui/dialog";
+import { Skeleton } from "~/components/ui/skeleton";
 
 import Meanings from "./components/Meanings";
 import { fetchDefinition } from "./queries/definition";
-
 
 interface FlashCardProps {
   word: string;
@@ -21,17 +24,39 @@ interface FlashCardProps {
 export default function FlashCard({ word }: FlashCardProps) {
   const [isFlipped, setIsFlipped] = useState(false);
 
-  const { data, error, isLoading } = useQuery({
+  const {
+    data: definition,
+    error: definitionError,
+    isLoading: isDefinitionLoading,
+  } = useQuery({
     queryKey: ["definition", word],
     queryFn: () => fetchDefinition(word),
     enabled: isFlipped,
   });
 
+  const audioUrl = definition?.[0]?.phonetics?.[0]?.audio;
+  const playAudio = (e: React.MouseEvent<SVGSVGElement>) => {
+    e.stopPropagation();
+
+    const audioElement = new Audio(audioUrl);
+    audioElement.play();
+  };
+
+  useEffect(() => {
+    if (definitionError) {
+      toast.error(
+        definitionError instanceof Error
+          ? definitionError.message
+          : "Failed to fetch word's definition"
+      );
+    }
+  }, [definitionError]);
+
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        <Card className="flex-1 min-w-[250px] text-center cursor-pointer">
-          {word}
+      <DialogTrigger asChild onClick={() => setIsFlipped(false)}>
+        <Card className="flex-1 min-w-48 text-center cursor-pointer">
+          {word.toLocaleLowerCase()}
         </Card>
       </DialogTrigger>
 
@@ -42,18 +67,40 @@ export default function FlashCard({ word }: FlashCardProps) {
       >
         {isFlipped ? (
           <>
-            <DialogHeader>
-              <DialogTitle className="text-lg leading-none font-semibold text-center">
-                {word}
+            <DialogHeader className="relative flex flex-col items-center">
+              <DialogTitle className="text-xl leading-none font-semibold text-center">
+                {word.toLocaleLowerCase()}
               </DialogTitle>
+              {definition && audioUrl && (
+                <Volume2Icon
+                  className="absolute right-0 top-0 w-6 h-6"
+                  onClick={playAudio}
+                />
+              )}
             </DialogHeader>
             <div className="flex items-center gap-2">
-              {data ? (
-                <Meanings meanings={data[0].meanings} />
-              ) : (
-                <div className="flex-1 gap-2">Loading...</div>
-              )}
+              <Meanings
+                isLoading={isDefinitionLoading}
+                meanings={definition?.[0]?.meanings}
+              />
             </div>
+            <DialogFooter>
+              <div className="w-full">
+                {isDefinitionLoading && <Skeleton className="h-4 w-full" />}
+                {definition && (
+                  <>
+                    <div className="text-[11px] font-semibold text-gray-700">
+                      Source:
+                    </div>
+                    <div className="flex flex-col gap-0">
+                      <div className="text-[10px] text-gray-500">
+                        {definition[0].sourceUrls.join(", ")}
+                      </div>
+                    </div>
+                  </>
+                )}
+              </div>
+            </DialogFooter>
           </>
         ) : (
           <div className="flex items-center gap-2">

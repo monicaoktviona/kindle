@@ -1,9 +1,22 @@
 import type { Meaning } from "../type";
+import { Skeleton } from "~/components/ui/skeleton";
 
-export default function Meanings({ meanings }: { meanings: Meaning[] }) {
+export default function Meanings({
+  meanings,
+  isLoading,
+}: {
+  meanings: Meaning[] | undefined;
+  isLoading: boolean;
+}) {
   return (
-    <div  className="flex flex-col gap-4 overflow-y-auto max-h-96">
-      {meanings.map((meaning: Meaning) => (
+    <div className="flex flex-col gap-4 overflow-y-auto max-h-96 w-full">
+      {isLoading && (
+        <div className="flex flex-col gap-1">
+          <Skeleton className="h-6 w-24" />
+          <Skeleton className="h-36 w-full" />
+        </div>
+      )}
+      {!isLoading && meanings?.map((meaning: Meaning) => (
         <div>
           <div className="font-semibold">{meaning.partOfSpeech}</div>
           <ul className="list-disc list-inside space-y-1">
