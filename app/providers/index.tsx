@@ -11,8 +11,10 @@ import { Toaster } from "~/components/ui/sonner";
 const queryClient = new QueryClient({
   queryCache: new QueryCache({
     onError: (error, query) => {
-      if (error && query?.meta?.errorMessage) {
-        toast.error(query?.meta?.errorMessage);
+      const msg = query?.meta?.errorMessage;
+      if (error && msg !== undefined && msg !== null) {
+        const text = typeof msg === "string" ? msg : JSON.stringify(msg);
+        toast.error(text);
       }
     },
   }),

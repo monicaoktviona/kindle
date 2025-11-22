@@ -1,4 +1,4 @@
-import type { Meaning } from "../type";
+import type { Definition, Meaning } from "../type";
 import { Skeleton } from "~/components/ui/skeleton";
 
 export default function Meanings({
@@ -16,16 +16,19 @@ export default function Meanings({
           <Skeleton className="h-36 w-full" />
         </div>
       )}
-      {!isLoading && meanings?.map((meaning: Meaning) => (
-        <div>
-          <div className="font-semibold">{meaning.partOfSpeech}</div>
-          <ul className="list-disc list-inside space-y-1">
-            {meaning.definitions.map((def) => (
-              <li className="text-gray-700 text-sm">{def.definition}</li>
-            ))}
-          </ul>
-        </div>
-      ))}
+      {!isLoading &&
+        meanings?.map((meaning: Meaning, index) => (
+          <div key={index}>
+            <div className="font-semibold">{meaning.partOfSpeech}</div>
+            <ul className="list-disc list-inside space-y-1">
+              {meaning.definitions.map((def: Definition, index) => (
+                <li key={index} className="text-gray-700 text-sm">
+                  {def.definition}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
     </div>
   );
 }

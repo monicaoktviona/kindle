@@ -1,12 +1,12 @@
 import initSqlJs from "sql.js";
 
 // Read a SQLite file (ArrayBuffer) and return rows from a query
-export async function readSqlite<T = any>(
+export async function readSqlite<T>(
   fileBuffer: ArrayBuffer,
   query: string
 ): Promise<T[]> {
   const SQL = await initSqlJs({
-    locateFile: (file) => `/sql-wasm.wasm`, // Vite will serve this file
+    locateFile: () => `/sql-wasm.wasm`, // Vite will serve this file
   });
 
   const db = new SQL.Database(new Uint8Array(fileBuffer));
@@ -18,10 +18,11 @@ export async function readSqlite<T = any>(
   const { columns, values } = result[0];
 
   return values.map((row) => {
-    const obj: any = {};
+    const obj: Record<string, unknown> = {};
     row.forEach((value, i) => {
       obj[columns[i]] = value;
     });
+
     return obj as T;
   });
 }

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { DialogTitle } from "@radix-ui/react-dialog";
+import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 
 import { Button } from "~/components/ui/button";
@@ -22,6 +24,9 @@ function FlashCards() {
             <Button className="cursor-pointer">{t("addNewWord")}</Button>
           </DialogTrigger>
           <DialogContent>
+            <DialogTitle className="text-center text-lg font-bold">
+              {i18next.t("addNewWord")}
+            </DialogTitle>
             <VocabForm setOpenModal={setOpen} />
           </DialogContent>
         </Dialog>

@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Volume2Icon } from "components/ui/icons/lucide-volume-2";
-import { toast } from "sonner";
 
 import { Card } from "~/components/ui/card";
 import {
