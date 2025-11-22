@@ -6,5 +6,6 @@
     "newWord": "Kata Baru",
     "invalidEnglishWord": "Kata bahasa Inggris tidak valid. Silakan coba lagi.",
     "addNewWordDescription": "Tambahkan kata bahasa Inggris yang valid ke flashcards Anda.",
-    "save": "Simpan"
+    "save": "Simpan",
+    "failedToFetchWordDefinition": "Gagal mencari definisi kata"
 }

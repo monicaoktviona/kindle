@@ -1,13 +1,11 @@
-import { useEffect, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import type { Root } from "postcss";
+import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { set, z } from "zod";
+import { z } from "zod";
 
 import { fetchDefinition } from "../queries/definition";
-import type { Root2, WordDefinition } from "../type";
+import type { WordDefinition } from "../type";
 import { Button } from "~/components/ui/button";
 import {
   Form,
@@ -29,7 +27,11 @@ const formSchema = z.object({
     .min(1, i18n.t("field_required", { field: i18n.t("newWord") })),
 });
 
-export function VocabForm({ setOpenModal }: { setOpenModal: React.Dispatch<React.SetStateAction<boolean>> }) {
+export function VocabForm({
+  setOpenModal,
+}: {
+  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   const setRows = useVocabStore((state) => state.setRows);
   const rows = useVocabStore((state) => state.rows);
   const form = useForm<z.infer<typeof formSchema>>({
@@ -54,7 +56,7 @@ export function VocabForm({ setOpenModal }: { setOpenModal: React.Dispatch<React
       const updatedRows = rows ? [newWord, ...rows] : [newWord];
       setRows(updatedRows);
       setOpenModal(false);
-      
+
       toast.success(`"${data[0].word}" added to your flashcards!`);
     },
     onError: (error) => {

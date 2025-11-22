@@ -6,5 +6,6 @@
     "newWord": "New Word",
     "invalidEnglishWord": "Invalid English word. Please try again.",
     "addNewWordDescription": "Add a new valid English word to your flashcards.",
-    "save": "Save"
+    "save": "Save",
+    "failedToFetchWordDefinition": "Failed to fetch word's definition"
 }

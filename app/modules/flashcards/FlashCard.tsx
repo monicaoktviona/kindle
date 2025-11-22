@@ -13,6 +13,7 @@ import {
   DialogTrigger,
 } from "~/components/ui/dialog";
 import { Skeleton } from "~/components/ui/skeleton";
+import i18n from "~/lib/i18n";
 
 import Meanings from "./components/Meanings";
 import { fetchDefinition } from "./queries/definition";
@@ -24,14 +25,13 @@ interface FlashCardProps {
 export default function FlashCard({ word }: FlashCardProps) {
   const [isFlipped, setIsFlipped] = useState(false);
 
-  const {
-    data: definition,
-    error: definitionError,
-    isLoading: isDefinitionLoading,
-  } = useQuery({
+  const { data: definition, isPending: isDefinitionLoading } = useQuery({
     queryKey: ["definition", word],
     queryFn: () => fetchDefinition(word),
     enabled: isFlipped,
+    meta: {
+      errorMessage: i18n.t("failedToFetchWordDefinition"),
+    },
   });
 
   const audioUrl = definition?.[0]?.phonetics?.[0]?.audio;
@@ -41,16 +41,6 @@ export default function FlashCard({ word }: FlashCardProps) {
     const audioElement = new Audio(audioUrl);
     audioElement.play();
   };
-
-  useEffect(() => {
-    if (definitionError) {
-      toast.error(
-        definitionError instanceof Error
-          ? definitionError.message
-          : "Failed to fetch word's definition"
-      );
-    }
-  }, [definitionError]);
 
   return (
     <Dialog>
