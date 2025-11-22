@@ -1,5 +1,5 @@
 export type VocabularyWord = {
-  id: number;
+  id: string;
   category: number;
   lang: string;
   profileId: string;

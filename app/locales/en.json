@@ -1,4 +1,11 @@
 {
     "uploadYourKindleDictionaryFile": "Upload your Kindle dictionary file (.db)",
-    "goToFlashcards": "Go to Flashcards"
+    "goToFlashcards": "Go to Flashcards",
+    "addNewWord": "Add New Word",
+    "field_required": "{{field}} is required",
+    "newWord": "New Word",
+    "invalidEnglishWord": "Invalid English word. Please try again.",
+    "addNewWordDescription": "Add a new valid English word to your flashcards.",
+    "save": "Save",
+    "failedToFetchWordDefinition": "Failed to fetch word's definition"
 }

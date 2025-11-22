@@ -1,10 +1,13 @@
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router";
+
+import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
-import { Link } from "react-router";
-import { readSqlite } from "~/utils/readSql";
+import PageLayout from "~/layouts/PageLayout";
+import type { VocabularyWord } from "~/modules/upload-dictionary/type";
 import { useVocabStore } from "~/store/vocabStore";
-import { Button } from "~/components/ui/button";
-import { useTranslation } from "react-i18next";
+import { readSqlite } from "~/utils/readSql";
 
 function UploadDictionary() {
   const { setRows } = useVocabStore();
@@ -17,11 +20,11 @@ function UploadDictionary() {
     const buffer = await selectedFile.arrayBuffer();
     const data = await readSqlite(buffer, "SELECT * FROM 'WORDS'");
 
-    setRows(data);
+    setRows(data as VocabularyWord[]);
   };
 
   return (
-    <>
+    <PageLayout className="space-y-6">
       <div className="grid w-full max-w-sm items-center gap-3">
         <Label htmlFor="dictionary">
           {t("uploadYourKindleDictionaryFile")}
@@ -39,7 +42,7 @@ function UploadDictionary() {
           </Button>
         </div>
       </div>
-    </>
+    </PageLayout>
   );
 }
 
