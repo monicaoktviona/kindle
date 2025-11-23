@@ -32,8 +32,8 @@ export function VocabForm({
 }: {
   setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
-  const setRows = useVocabStore((state) => state.setRows);
-  const rows = useVocabStore((state) => state.rows);
+  const setRows = useVocabStore((state) => state.setWords);
+  const rows = useVocabStore((state) => state.words);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {

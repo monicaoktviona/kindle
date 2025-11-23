@@ -4,15 +4,15 @@ import { persist } from "zustand/middleware";
 import type { VocabularyWord } from "~/modules/upload-dictionary/type";
 
 interface VocabState {
-  rows: VocabularyWord[] | null;
-  setRows: (rows: VocabularyWord[]) => void;
+  words: VocabularyWord[] | null;
+  setWords: (words: VocabularyWord[] | null) => void;
 }
 
 export const useVocabStore = create<VocabState>()(
   persist(
     (set) => ({
-      rows: null,
-      setRows: (rows: VocabularyWord[]) => set({ rows }),
+      words: null,
+      setWords: (words: VocabularyWord[] | null) => set({ words }),
     }),
     {
       name: "vocab-storage",
