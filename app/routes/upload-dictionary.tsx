@@ -57,7 +57,10 @@ function UploadDictionary() {
   }
 
   return (
-    <PageLayout className="flex flex-col items-center justify-start">
+    <PageLayout
+      className="flex flex-col items-center justify-start"
+      navbar={false}
+    >
       <div className="flex flex-col justify-center items-center gap-2">
         <Label className="font-bold text-md text-center" htmlFor="dictionary">
           {t("uploadYourKindleDictionaryFile")}
@@ -118,10 +121,17 @@ function UploadDictionary() {
         </div>
 
         {fileName && (
-          <div className="flex w-full justify-center gap-4">
-            <Button>
-              <Link to="/flashcards">{t("goToFlashcards")}</Link>
-            </Button>
+          <div className="flex flex-row gap-4">
+            <div className="flex w-full justify-center gap-4">
+              <Button>
+                <Link to="/flashcards">{t("goToFlashcards")}</Link>
+              </Button>
+            </div>
+            <div className="flex w-full justify-center gap-4">
+              <Button>
+                <Link to="/quiz">{t("tryQuiz")}</Link>
+              </Button>
+            </div>
           </div>
         )}
       </div>

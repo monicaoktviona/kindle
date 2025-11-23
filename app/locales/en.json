@@ -1,6 +1,7 @@
 {
   "uploadYourKindleDictionaryFile": "Upload your Kindle dictionary file (.db)",
   "goToFlashcards": "Go to Flashcards",
+  "tryQuiz": "Try Quiz",
   "addNewWord": "Add New Word",
   "field_required": "{{field}} is required",
   "newWord": "New Word",
@@ -19,5 +20,15 @@
   "quiz": "Quiz",
   "quizDescription": "Strengthen your learning with synonym quizzes designed to reinforce meaning and memory.",
   "prev": "Previous",
-  "next": "Next"
+  "next": "Next",
+  "definitionIsNotAvailable": "Definition is not available",
+  "startQuiz": "Start Quiz",
+  "yourScore": "Your Score",
+  "tryAgain": "Try Again",
+  "question": "Question",
+  "selectTheWordThatIs": "Select the word that is ",
+  "not": "NOT",
+  "aSynonymOf": "a synonym of",
+  "finish": "Finish",
+  "nextQuestion": "Next Question"
 }

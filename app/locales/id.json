@@ -1,6 +1,7 @@
 {
   "uploadYourKindleDictionaryFile": "Unggah file kamus Kindle Anda (.db)",
   "goToFlashcards": "Lihat Flashcards",
+  "tryQuiz": "Coba Kuis",
   "addNewWord": "Tambah Kata Baru",
   "field_required": "{{field}} wajib diisi",
   "newWord": "Kata Baru",
@@ -19,5 +20,15 @@
   "quiz": "Kuis",
   "quizDescription": "Perkuat pembelajaran Anda dengan kuis sinonim yang dirancang untuk memperdalam makna dan daya ingat.",
   "prev": "Sebelumnya",
-  "next": "Selanjutnya"
+  "next": "Selanjutnya",
+  "definitionIsNotAvailable": "Definisi tidak tersedia",
+  "startQuiz": "Mulai Kuis",
+  "yourScore": "Skor Anda",
+  "tryAgain": "Coba Lagi",
+  "question": "Pertanyaan",
+  "selectTheWordThatIs": "Pilih kata yang ",
+  "not": "BUKAN",
+  "aSynonymOf": "sinonim dari",
+  "finish": "Selesai",
+  "nextQuestion": "Pertanyaan Selanjutnya"
 }

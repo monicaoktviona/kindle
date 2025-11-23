@@ -41,7 +41,10 @@ function FlashCards() {
 
   return (
     <>
-      <PageLayout className="space-y-6 flex flex-col justify-center items-center">
+      <PageLayout
+        className="space-y-6 flex flex-col justify-center items-center"
+        navbar={true}
+      >
         <h1 className="text-center font-bold text-2xl">Flashcards</h1>
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
