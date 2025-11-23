@@ -118,10 +118,17 @@ function UploadDictionary() {
         </div>
 
         {fileName && (
-          <div className="flex w-full justify-center gap-4">
-            <Button>
-              <Link to="/flashcards">{t("goToFlashcards")}</Link>
-            </Button>
+          <div className="flex flex-row gap-4">
+            <div className="flex w-full justify-center gap-4">
+              <Button>
+                <Link to="/flashcards">{t("goToFlashcards")}</Link>
+              </Button>
+            </div>
+            <div className="flex w-full justify-center gap-4">
+              <Button>
+                <Link to="/quiz">{t("tryQuiz")}</Link>
+              </Button>
+            </div>
           </div>
         )}
       </div>

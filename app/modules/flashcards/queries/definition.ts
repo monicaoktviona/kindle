@@ -15,7 +15,5 @@ export const fetchDefinition = async (
   }
   const apiResponse: WordDefinition = await response.json();
 
-  console.log("API Response:", apiResponse);
-
   return apiResponse;
 };

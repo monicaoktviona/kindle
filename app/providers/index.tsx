@@ -9,6 +9,8 @@ import { toast } from "sonner";
 
 import { Toaster } from "~/components/ui/sonner";
 
+import Wrapper from "./Wrapper";
+
 const queryClient = new QueryClient({
   queryCache: new QueryCache({
     onError: (error, query) => {
@@ -24,10 +26,12 @@ const queryClient = new QueryClient({
 export default function Providers({ children }: { children: ReactNode }) {
   return (
     <NuqsAdapter>
-      <QueryClientProvider client={queryClient}>
-        <Toaster position="bottom-center" />
-        {children}
-      </QueryClientProvider>
+      <Wrapper>
+        <QueryClientProvider client={queryClient}>
+          <Toaster position="bottom-center" />
+          {children}
+        </QueryClientProvider>
+      </Wrapper>
     </NuqsAdapter>
   );
 }
