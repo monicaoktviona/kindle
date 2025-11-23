@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { DialogTitle } from "@radix-ui/react-dialog";
-import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 
 import { Button } from "~/components/ui/button";
@@ -12,7 +11,7 @@ import { useVocabStore } from "~/store/vocabStore";
 
 function FlashCards() {
   const [open, setOpen] = useState(false);
-  const rows = useVocabStore((state) => state.rows);
+  const rows = useVocabStore((state) => state.words);
   const { t } = useTranslation();
 
   return (
@@ -25,7 +24,7 @@ function FlashCards() {
           </DialogTrigger>
           <DialogContent>
             <DialogTitle className="text-center text-lg font-bold">
-              {i18next.t("addNewWord")}
+              {t("addNewWord")}
             </DialogTitle>
             <VocabForm setOpenModal={setOpen} />
           </DialogContent>
