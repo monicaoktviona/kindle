@@ -24,7 +24,10 @@ function Quiz() {
   } = useQuiz();
 
   return (
-    <PageLayout className="flex flex-col items-center gap-4">
+    <PageLayout
+      className="flex flex-col items-center justify-start gap-4"
+      navbar={true}
+    >
       <h1 className="text-xl font-bold">{t("quiz")}</h1>
       {questionNumber === -1 && (
         <Button className="cursor-pointer" onClick={startQuiz}>

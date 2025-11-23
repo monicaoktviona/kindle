@@ -57,7 +57,10 @@ function UploadDictionary() {
   }
 
   return (
-    <PageLayout className="flex flex-col items-center justify-start">
+    <PageLayout
+      className="flex flex-col items-center justify-start"
+      navbar={false}
+    >
       <div className="flex flex-col justify-center items-center gap-2">
         <Label className="font-bold text-md text-center" htmlFor="dictionary">
           {t("uploadYourKindleDictionaryFile")}
