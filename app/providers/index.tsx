@@ -4,6 +4,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
+import { NuqsAdapter } from "nuqs/adapters/react-router/v7";
 import { toast } from "sonner";
 
 import { Toaster } from "~/components/ui/sonner";
@@ -22,9 +23,11 @@ const queryClient = new QueryClient({
 
 export default function Providers({ children }: { children: ReactNode }) {
   return (
-    <QueryClientProvider client={queryClient}>
-      <Toaster position="bottom-center" />
-      {children}
-    </QueryClientProvider>
+    <NuqsAdapter>
+      <QueryClientProvider client={queryClient}>
+        <Toaster position="bottom-center" />
+        {children}
+      </QueryClientProvider>
+    </NuqsAdapter>
   );
 }
