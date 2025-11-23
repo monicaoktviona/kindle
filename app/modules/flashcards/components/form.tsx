@@ -29,8 +29,10 @@ const formSchema = z.object({
 
 export function VocabForm({
   setOpenModal,
+  setCurrentPage,
 }: {
   setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
 }) {
   const setRows = useVocabStore((state) => state.setWords);
   const rows = useVocabStore((state) => state.words);
@@ -56,6 +58,7 @@ export function VocabForm({
       const updatedRows = rows ? [newWord, ...rows] : [newWord];
       setRows(updatedRows);
       setOpenModal(false);
+      setCurrentPage(1);
 
       toast.success(`"${data[0].word}" added to your flashcards!`);
     },

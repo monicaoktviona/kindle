@@ -17,5 +17,7 @@
   "practice": "Practice",
   "practiceDescription": "Practice with flashcards—view definitions, hear pronunciations, and add new words.",
   "quiz": "Quiz",
-  "quizDescription": "Strengthen your learning with synonym quizzes designed to reinforce meaning and memory."
+  "quizDescription": "Strengthen your learning with synonym quizzes designed to reinforce meaning and memory.",
+  "prev": "Previous",
+  "next": "Next"
 }
