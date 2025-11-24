@@ -26,7 +26,6 @@ export default function Wrapper({ children }: { children: ReactNode }) {
       navigate("/", { replace: true });
     }
   }, [navigate]);
-
-
+  
   return children;
 }

@@ -9,7 +9,7 @@ export default function Meanings({
   isLoading: boolean;
 }) {
   return (
-    <div className="flex flex-col gap-4 overflow-y-auto max-h-96 w-full">
+    <div className="flex flex-col gap-4 overflow-y-auto max-h-36 w-full">
       {isLoading && (
         <div className="flex flex-col gap-1">
           <Skeleton className="h-6 w-24" />
@@ -18,7 +18,7 @@ export default function Meanings({
       )}
       {!isLoading &&
         meanings?.map((meaning: Meaning, index) => (
-          <div key={index}>
+          <div key={index} className="text-left px-4">
             <div className="font-semibold">{meaning.partOfSpeech}</div>
             <ul className="list-disc list-inside space-y-1">
               {meaning.definitions.map((def: Definition, index) => (

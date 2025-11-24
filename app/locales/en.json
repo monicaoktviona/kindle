@@ -9,6 +9,7 @@
   "addNewWordDescription": "Add a new valid English word to your flashcards.",
   "save": "Save",
   "failedToFetchWordDefinition": "Failed to fetch word's definition",
+  "source": "Sources",
   "dragDropOrClickToUpload": "Drag & drop your SQLite file here, or click to upload",
   "tryUsingASampleFile": "Try using a sample file",
   "uploading": "Uploading...",

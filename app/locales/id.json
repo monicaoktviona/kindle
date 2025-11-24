@@ -9,6 +9,7 @@
   "addNewWordDescription": "Tambahkan kata bahasa Inggris yang valid ke flashcards Anda.",
   "save": "Simpan",
   "failedToFetchWordDefinition": "Gagal mencari definisi kata",
+  "source": "Sumber",
   "dragDropOrClickToUpload": "Seret & lepas file SQLite Anda di sini, atau klik untuk mengunggah",
   "tryUsingASampleFile": "Coba dengan file contoh",
   "uploading": "Mengunggah...",
