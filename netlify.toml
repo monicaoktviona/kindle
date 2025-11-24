@@ -1,0 +1,8 @@
+// Source - https://stackoverflow.com/a
+// Posted by Muho
+// Retrieved 2025-11-24, License - CC BY-SA 4.0
+
+[[redirects]]
+  from = "/*"
+  to = "/"
+  status = 200
