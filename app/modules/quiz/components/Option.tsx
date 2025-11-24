@@ -8,17 +8,17 @@ import { cn } from "~/lib/utils";
 import { fetchDefinition } from "~/modules/flashcards/queries/definition";
 
 interface OptionProps {
-  option: Option;
   handleClickAnswer: (option: Option) => void;
-  isPending: boolean;
   isAnswered: boolean;
+  isPending: boolean;
+  option: Option;
 }
 
 export default function OptionCard({
-  option,
   handleClickAnswer,
-  isPending,
   isAnswered,
+  isPending,
+  option,
 }: OptionProps) {
   const { t } = useTranslation();
   const {

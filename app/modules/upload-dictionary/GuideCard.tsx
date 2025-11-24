@@ -2,17 +2,17 @@ import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { cn } from "~/lib/utils";
 
 type GuideCardProps = {
-  title: string;
+  className?: string;
   description: string;
   icon: React.ReactNode;
-  className?: string;
+  title: string;
 };
 
 export function GuideCard({
-  title,
+  className,
   description,
   icon,
-  className,
+  title,
 }: GuideCardProps) {
   return (
     <Card

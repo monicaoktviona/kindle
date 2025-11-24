@@ -67,20 +67,17 @@ function Quiz() {
 
           <div className="flex flex-col gap-4">
             {isPending ? (
-              <>
+              Array.from({ length: 4 }).map(() => (
                 <Skeleton className="w-96 h-16" />
-                <Skeleton className="w-96 h-16" />
-                <Skeleton className="w-96 h-16" />
-                <Skeleton className="w-96 h-16" />
-              </>
+              ))
             ) : (
               options?.map((option, idx) => (
                 <OptionCard
-                  key={idx}
-                  option={option}
+                  handleClickAnswer={handleClickAnswer}
                   isAnswered={isAnswered}
                   isPending={isPending}
-                  handleClickAnswer={handleClickAnswer}
+                  key={idx}
+                  option={option}
                 />
               ))
             )}

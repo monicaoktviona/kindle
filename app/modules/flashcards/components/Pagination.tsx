@@ -52,11 +52,11 @@ export default function FlashcardPagination(props: FlashcardPaginationProps) {
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious
-            onClick={() => handlePageChange(props.currentPage - 1)}
             className={cn(
               props.currentPage === 1 ? "hidden" : "flex",
               "flex-row items-center justify-center"
             )}
+            onClick={() => handlePageChange(props.currentPage - 1)}
           ></PaginationPrevious>
         </PaginationItem>
         {pages.map((p, i) => {
@@ -81,11 +81,11 @@ export default function FlashcardPagination(props: FlashcardPaginationProps) {
         })}
         <PaginationItem>
           <PaginationNext
-            onClick={() => handlePageChange(props.currentPage + 1)}
             className={cn(
               props.currentPage === props.totalPages ? "hidden" : "flex",
               "flex-row items-center justify-center"
             )}
+            onClick={() => handlePageChange(props.currentPage + 1)}
           ></PaginationNext>
         </PaginationItem>
       </PaginationContent>
