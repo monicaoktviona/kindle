@@ -1,6 +1,10 @@
+import "~/styles/flipcard.css";
+
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Volume2Icon } from "components/ui/icons/lucide-volume-2";
+import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 import { Card } from "~/components/ui/card";
 import {
@@ -12,7 +16,6 @@ import {
   DialogTrigger,
 } from "~/components/ui/dialog";
 import { Skeleton } from "~/components/ui/skeleton";
-import i18n from "~/lib/i18n";
 
 import Meanings from "./components/Meanings";
 import { fetchDefinition } from "./queries/definition";
@@ -23,13 +26,14 @@ interface FlashCardProps {
 
 export default function FlashCard({ word }: FlashCardProps) {
   const [isFlipped, setIsFlipped] = useState(false);
+  const { t } = useTranslation();
 
   const { data: definition, isPending: isDefinitionLoading } = useQuery({
     queryKey: ["definition", word],
     queryFn: () => fetchDefinition(word),
     enabled: isFlipped,
     meta: {
-      errorMessage: i18n.t("failedToFetchWordDefinition"),
+      errorMessage: t("failedToFetchWordDefinition"),
     },
   });
 
@@ -50,12 +54,18 @@ export default function FlashCard({ word }: FlashCardProps) {
       </DialogTrigger>
 
       <DialogContent
-        className="sm:max-w-md min-h-48 cursor-pointer"
+        className="sm:max-w-md cursor-pointer flip-card-container w-full h-64"
         onClick={() => setIsFlipped((prev) => !prev)}
         showCloseButton={false}
       >
-        {isFlipped ? (
-          <>
+        <motion.div
+          className="flip-card-inner w-full h-full"
+          initial={false}
+          animate={{ rotateY: isFlipped ? 180 : 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          style={{ transformStyle: "preserve-3d" }}
+        >
+          <div className="flip-card-back flex flex-col gap-1 justify-center">
             <DialogHeader className="relative flex flex-col items-center">
               <DialogTitle className="text-xl leading-none font-semibold text-center">
                 {word.toLocaleLowerCase()}
@@ -79,7 +89,7 @@ export default function FlashCard({ word }: FlashCardProps) {
                 {definition && (
                   <>
                     <div className="text-[11px] font-semibold text-gray-700">
-                      Source:
+                      {t("source")}:
                     </div>
                     <div className="flex flex-col gap-0">
                       <div className="text-[10px] text-gray-500">
@@ -90,14 +100,13 @@ export default function FlashCard({ word }: FlashCardProps) {
                 )}
               </div>
             </DialogFooter>
-          </>
-        ) : (
-          <div className="flex items-center gap-2">
+          </div>
+          <div className="flex items-center gap-2 flip-card-front w-full h-full">
             <div className="flex-1 gap-2 text-center text-2xl font-bold">
               {word.toLocaleLowerCase()}
             </div>
           </div>
-        )}
+        </motion.div>
       </DialogContent>
     </Dialog>
   );
